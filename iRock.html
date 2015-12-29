@@ -4,17 +4,29 @@
 	<meta charset="UTF-8">
 	<title>iRock-The Virtual Pet Rock</title>
 	<style>
-	div {
+	div{
 		margin-top:100px;
-		text-align: center; 
+		text-align:center; 
 	}
 
+	img {
+		cursor: pointer; //鼠标滑过时，改变鼠标光标为手掌型
+	}
 	</style>
 	<script type="text/javascript">
+	function touchRock () {
+		var userName = prompt("what is your name","Enter your name here");
 
+		if (userName) {
+			alert("It is good to see you, "+ userName + ".");
+			document.getElementById("rockImg").src = "rock_happy.png";
+		};
+	}
 	</script>
 </head>
-<body>
-	<div><img src="rock.png" alt="iRock" id="rockImg"></div>
+<body onload="alert('hello,I am ur pet rock.');">
+	<div onclick="touchRock();">
+		<img src="rock.png" alt="iRock" id="rockImg">
+	</div>
 </body>
 </html>
