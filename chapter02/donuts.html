@@ -5,11 +5,20 @@
 	<title>Document</title>
 	<link rel="stylesheet" type="text/css" href="donuts.css">
 	<script type="text/javascript">
+
+	function checkDonuts(donutsString) {
+		var numOfDonuts = parseInt(donutsString);
+		if (donutsString.indexOf("dozen") != -1) {
+			numOfDonuts *= 12;
+		}
+		return numOfDonuts;
+	}
+	
 	function updateOrder(){
 		const TAXRATE = 0.0925;  //常量 税率
 		const DONUTPRICE = 0.50; //常量 价格
-		var numOfCakeDonuts = parseInt(document.getElementById("cakedonuts").value);
-		var numOfGlazedDonuts = parseInt(document.getElementById("glazeddonuts").value);
+		var numOfCakeDonuts = checkDonuts(document.getElementById("cakedonuts").value);
+		var numOfGlazedDonuts = checkDonuts(document.getElementById("glazeddonuts").value);
 		if (isNaN(numOfCakeDonuts)) {
 			numOfCakeDonuts = 0;
 		}
