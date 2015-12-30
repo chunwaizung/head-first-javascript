@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>iRock-The Virtual Pet Rock</title>
+	<style>
+	div{
+		margin-top:100px;
+		text-align:center; 
+	}
+
+	img{
+		cursor: pointer; /*鼠标滑过时，改变鼠标光标为手掌型*/
+	}
+	</style>
+	<script type="text/javascript">
+	function touchRock () {
+		//变量使用var声明
+		var userName = prompt("what is your name","Enter your name here");//prompt()函数提示一个信息，并给出一个文本输入框让用户输入需要的信息
+
+		if (userName) {
+			alert("It is good to see you, "+ userName + ".");//alert()函数弹出提示信息
+			document.getElementById("rockImg").src = "rock_happy.png";//getElementById()函数根据传入的值找到对应id的元素
+		};
+	}
+
+	var timeoutID;//存储setTimeout回传的ID，可用于稍后的window.clearTimeout()
+
+	function delayedAlert(){
+		timeoutID = window.setTimeout(showAlert, 2000);
+	}
+
+	function showAlert(){
+		alert("你叫我干啥？");
+	}
+
+	</script>
+
+</head>
+<body onload="alert('hello,I am ur pet rock.');"> <!--onload事件在页面载入时触发 -->
+	<div onclick="touchRock();"> <!--onclick事件在鼠标点击时触发-->
+		<img src="rock.png" alt="iRock" id="rockImg">
+	</div>
+	<div><button onclick="delayedAlert();">show an alert box</button></div>
+</body>
+</html>
