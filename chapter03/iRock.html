@@ -1,8 +1,9 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>iRock-The Virtual Pet Rock</title>
+
+	<!--###CSS部分###-->
 	<style>
 	div{
 		margin-top:100px;
@@ -14,37 +15,52 @@
 	}
 	</style>
 
+	<!--###Javascript部分###-->
 	<script type="text/javascript">
+	//变量使用var声明
+	var userName;
+
 	function changeRockFace (imgName){
 		document.getElementById("rockImg").src = imgName;//getElementById()函数根据传入的值找到对应id的元素
 	}
 
 	/*测试setTimeout函数功能*/
 	var timeoutID;//存储setTimeout回传的ID，可用于稍后的window.clearTimeout()
-	function delayedAlert(){
+	function delayedAlert() {
 		timeoutID = window.setTimeout(showAlert, 5000); //showAlert:到预订时间之后执行的代码，5000:毫秒数，设定时间
 	}
 	function showAlert(){
 		alert("你叫我干啥？");
 	}
 
-	function touchRock () {
-		//变量使用var声明
-		var userName = prompt("what is your name","Enter your name here");//prompt()函数提示一个信息，并给出一个文本输入框让用户输入需要的信息
-
+	function touchRock() {
 		if (userName) {
-			alert("It is good to see you, "+ userName + ".");//alert()函数弹出提示信息
-		};
+			alert("I like the attention, "+userName+", Thank you.");
+		}else{
+			userName = prompt("what is your name","Enter your name here");//prompt()函数提示一个信息，并给出一个文本输入框让用户输入需要的信息
+			if (userName) {
+				alert("It is good to see you, "+ userName + ".");//alert()函数弹出提示信息
+			}
+		}
 		changeRockFace("rock_happy.png");
 		setTimeout("changeRockFace('rock.png');", 5000);
 	}
-	</script>
 
+    function resizeRock() {
+    	alert("resizing...");
+    	document.getElementById("rockImg").style.height = (document.body.clientHeight - 100) * 0.9;
+    }
+
+	function pageDidLoad() {
+        alert('Hello, I am your pet rock.');
+	}
+	</script>
 </head>
-<body onload="alert('hello,I am ur pet rock.');"> <!--onload事件在页面载入时触发 -->
-	<div onclick="touchRock();"> <!--onclick事件在鼠标点击时触发-->
+
+<body onload="resizeRock(); pageDidLoad();"> <!--onload事件在页面载入时触发 -->
+	<div onclick="touchRock();"> <!--onclick事件在鼠标点击时触发--> <!--为什么html、css、javascript注释都不一样？？？掀桌-->
 		<img src="rock.png" alt="iRock" id="rockImg">
 	</div>
-	<div><button onclick="delayedAlert();">show an alert box</button></div>
+	<div><button onclick="resizeRock();">show an alert box</button></div>
 </body>
 </html>
