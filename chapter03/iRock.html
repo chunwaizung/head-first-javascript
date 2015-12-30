@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -5,6 +6,7 @@
 
 	<!--###CSS部分###-->
 	<style>
+	html, body {height:100%;}
 	div{
 		margin-top:100px;
 		text-align:center; 
@@ -48,7 +50,7 @@
 
     function resizeRock() {
     	alert("resizing...");
-    	document.getElementById("rockImg").style.height = (document.body.clientHeight - 100) * 0.9;
+    	document.getElementById("rockImg").style.height = (document.body.clientHeight - 100) * 0.9 + "px";
     }
 
 	function pageDidLoad() {
