@@ -1,0 +1,29 @@
+body{
+	text-align: center;
+}
+
+#frame{
+	margin-top: 15px;
+	width: 440px; /*限制宽度为440像素，不受浏览器宽度影响*/
+}
+
+.heading{
+	font-size: 30px;
+	margin-bottom: 5px;
+}
+
+.subheading{
+	font-size: 25px;
+	font-style: italic;
+	margin-bottom: 10px;
+}
+
+#img{
+	float: left;
+	width: 130px;
+}
+
+.field{
+	margin-top: 5px;/*表单间距5像素，否则过于拥挤*/
+	text-align: right;
+}
