@@ -6,7 +6,10 @@
 
 	<!--###CSS部分###-->
 	<style>
-	html, body {height:100%;}
+	html, body{
+		height:100%;
+	}
+
 	div{
 		margin-top:100px;
 		text-align:center; 
@@ -18,6 +21,8 @@
 	</style>
 
 	<!--###Javascript部分###-->
+	<script type="text/javascript" src="cookie.js"></script> <!--导入外部js文件-->
+
 	<script type="text/javascript">
 	//变量使用var声明
 	var userName;
@@ -42,27 +47,36 @@
 			userName = prompt("what is your name","Enter your name here");//prompt()函数提示一个信息，并给出一个文本输入框让用户输入需要的信息
 			if (userName) {
 				alert("It is good to see you, "+ userName + ".");//alert()函数弹出提示信息
+				if (navigator.cookieEnabled) {
+					writeCookie("irock_username",userName,5);//写入cookie
+				}
 			}
 		}
-		changeRockFace("rock_happy.png");
+		changeRockFace("rock_happy.png");//参数放在括号里传进去
 		setTimeout("changeRockFace('rock.png');", 5000);
 	}
 
     function resizeRock() {
-    	alert("resizing...");
     	document.getElementById("rockImg").style.height = (document.body.clientHeight - 100) * 0.9 + "px";
     }
 
 	function pageDidLoad() {
-        alert('Hello, I am your pet rock.');
+		if (navigator.cookieEnabled) { //检查浏览器cookie可用性
+			userName = readCookie("irock_username");//从cookie读取缓存
+		}
+		if (userName) {
+			alert("Hello " + userName + ", I missed you");
+		}else {
+			alert('Hello, I am your pet rock.');
+		}
 	}
 	</script>
 </head>
 
-<body onload="resizeRock(); pageDidLoad();"> <!--onload事件在页面载入时触发 -->
+<body onload="resizeRock(); pageDidLoad();" onresize="resizeRock();"> <!--onload事件在页面载入时触发--> <!--onresize事件在浏览器窗口大小改变时触发-->
 	<div onclick="touchRock();"> <!--onclick事件在鼠标点击时触发--> <!--为什么html、css、javascript注释都不一样？？？掀桌-->
 		<img src="rock.png" alt="iRock" id="rockImg">
 	</div>
-	<div><button onclick="resizeRock();">show an alert box</button></div>
+	<div><button onclick="resizeRock();">resize Rock</button></div>
 </body>
 </html>
